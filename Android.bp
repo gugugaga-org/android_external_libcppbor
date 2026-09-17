@@ -55,7 +55,17 @@ cc_library {
     shared_libs: [
         "libbase",
         "libcrypto",
-    ]
+    ],
+    // The vendor variant exists only so that vendor_available consumers such as
+    // libcppcose_rkp can be analyzed.  TPM312 installs the Rockchip prebuilt as
+    // /vendor/lib*/libcppbor_external.so instead (Rockchip's keymaster binaries
+    // are built against a different, incompatible cppbor ABI), so rename this
+    // variant to keep its install rule from colliding with that prebuilt.
+    target: {
+        vendor: {
+            suffix: "_aosp",
+        },
+    },
 }
 
 cc_test {
