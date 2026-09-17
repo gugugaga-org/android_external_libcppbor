@@ -43,7 +43,7 @@ cc_library {
     defaults: [
         "libcppbor_defaults",
     ],
-    vendor_available: false,
+    vendor_available: true,
     host_supported: true,
     srcs: [
         "src/cppbor.cpp",
